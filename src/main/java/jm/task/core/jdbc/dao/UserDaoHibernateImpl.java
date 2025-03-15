@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
@@ -85,7 +84,7 @@ public class UserDaoHibernateImpl implements UserDao {
     }
 
     @Override
-    public void cleanUsersTable() {
+    public void cleanUsersTable() { 
         String hql = "DELETE FROM User";
 
         try(Session session = sessionFactory.openSession()) {

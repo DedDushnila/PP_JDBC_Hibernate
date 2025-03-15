@@ -13,9 +13,6 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-
-
-
 public class Util {
 
     private final String url = "jdbc:postgresql://localhost:5432/postgres";
@@ -34,7 +31,7 @@ public class Util {
         return connection;
     }
 
-    public static SessionFactory getSessionFactory() {
+    public static SessionFactory buildSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = getConfiguration();
@@ -58,12 +55,13 @@ public class Util {
         settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/postgres");
         settings.put(Environment.USER, "postgres");
         settings.put(Environment.PASS, "04021993");
-        settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
-        settings.put(Environment.SHOW_SQL, "true");
-        settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-        settings.put(Environment.HBM2DDL_AUTO, "validate");
+        settings.put(Environment.HBM2DDL_AUTO, "update");
 
         configuration.setProperties(settings);
         return configuration;
+    }
+
+    public static SessionFactory getSessionFactory() {
+        return buildSessionFactory();
     }
 }
