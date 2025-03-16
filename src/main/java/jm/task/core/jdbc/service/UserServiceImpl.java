@@ -3,7 +3,9 @@ package jm.task.core.jdbc.service;
 import jm.task.core.jdbc.dao.UserDao;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.model.User;
+import org.w3c.dom.ls.LSOutput;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -28,6 +30,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<User> getAllUsers() {
+        System.out.println(userDaoJDBC.getAllUsers());
         return userDaoJDBC.getAllUsers();
     }
 
